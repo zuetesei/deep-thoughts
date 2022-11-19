@@ -11,7 +11,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
-// import NoMatch from './pages/NoMatch';
+import NoMatch from './pages/NoMatch';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
@@ -47,14 +47,21 @@ function App() {
                 path="/signup"
                 element={<Signup />}
               />
+
+              <Route path="/profile">
+                <Route path=":username" element={<Profile />} />
+                <Route path="" element={<Profile />} />
+              </Route>
               <Route
-                path="/profile"
-                element={<Profile />}
-              />
-              <Route
-                path="/thought"
+                path="/thought/:id"
                 element={<SingleThought />}
               />
+
+              <Route
+                path="*"
+                element={<NoMatch />}
+              />
+
             </Routes>
           </div>
           <Footer />
